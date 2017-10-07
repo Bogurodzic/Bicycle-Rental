@@ -12,11 +12,11 @@ package bicycle;
 public class Bicycle {
     private float bicycleId;
     private int wheelsNumber;
-    protected enum State {
+    static enum State {
         AVALIABLE, UNAVALIABLE, BROKEN, SERVICE
     }
     
-    State status;
+    private State status;
     private int userId;
     
     public Bicycle(float bicycleId, int wheelsNumber,State status, int userId){
@@ -26,4 +26,15 @@ public class Bicycle {
         this.userId = userId;
     }
     
+    public float getBicycleId(){
+        return this.bicycleId;
+    }
+    
+    public int getWheelsNumber(){
+        return this.wheelsNumber;
+    }
+    
+    public int getUserId(){
+        return this.userId;
+    }
 }

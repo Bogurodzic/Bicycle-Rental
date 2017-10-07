@@ -1,2 +1,8 @@
 #  Bicycle-Rental
-APK JAVA 1.0
+University Project
+
+## Project functionality
+Soon
+
+### Technologies used
+Soon
