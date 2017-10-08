@@ -20,4 +20,15 @@ public class User {
         this.surname = surname;
     }
     
+    public int getId(){
+        return this.id;
+    }
+    
+    public String getName(){
+        return this.name;
+    }
+    
+    public String getSurname(){
+        return this.surname;
+    }
 }
