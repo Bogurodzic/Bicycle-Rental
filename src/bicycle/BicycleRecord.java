@@ -13,4 +13,9 @@ public class BicycleRecord {
     
     static List<Bicycle> allBicycle = new ArrayList<Bicycle>();
     
+    static void removeBicycleFromRecord(){
+        for (Bicycle bicycle : allBicycle) {
+            System.out.println(bicycle.getLocation());
+        }
+    }
 }
