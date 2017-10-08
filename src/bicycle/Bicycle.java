@@ -15,15 +15,12 @@ public class Bicycle {
     static enum State {
         AVALIABLE, UNAVALIABLE, BROKEN, SERVICE
     }
+    private State status = State.AVALIABLE;
+    private int userId = 0;
     
-    private State status;
-    private int userId;
-    
-    public Bicycle(float bicycleId, int wheelsNumber,State status, int userId){
+    public Bicycle(float bicycleId, int wheelsNumber){
         this.bicycleId = bicycleId;
         this.wheelsNumber = wheelsNumber;
-        this.status = status;
-        this.userId = userId;
     }
     
     public float getBicycleId(){
@@ -38,11 +35,11 @@ public class Bicycle {
         return this.userId;
     }
     
-    public void addBicycleId(float bicycleId){
-        this.bicycleId = bicycleId;
-    }
-    
     public void addUserId(int userId){
         this.userId = userId;
+    }
+    
+    public void changeState(State status){
+        this.status = status;
     }
 }

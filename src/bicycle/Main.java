@@ -15,7 +15,7 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Bicycle bicycle1 = new Bicycle(1, 2, Bicycle.State.SERVICE, 5);
+        Bicycle bicycle1 = new Bicycle(1, 5);
         System.out.println(bicycle1.getUserId());
         BicycleRecord.allBicycle.add(bicycle1);
         System.out.println(BicycleRecord.allBicycle.get(0).getBicycleId());
