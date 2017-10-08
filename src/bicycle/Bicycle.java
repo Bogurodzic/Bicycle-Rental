@@ -37,4 +37,12 @@ public class Bicycle {
     public int getUserId(){
         return this.userId;
     }
+    
+    public void addBicycleId(float bicycleId){
+        this.bicycleId = bicycleId;
+    }
+    
+    public void addUserId(int userId){
+        this.userId = userId;
+    }
 }
