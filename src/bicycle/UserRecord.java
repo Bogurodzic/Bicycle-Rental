@@ -11,7 +11,7 @@ import java.util.*;
  * @author edaolsz
  */
 public class UserRecord {
-    private int numberOfUsers;
+    private int numberOfUsers = 0;
     
         User user1 = new User(6445,"Daniel","Olszewski", User.Role.ADMIN);
         User user2 = new User(8355,"Kamil","Jarzab", User.Role.USER);
@@ -27,6 +27,7 @@ public class UserRecord {
         allUsers.add(user3);
         
     }
+    
     public boolean ifExists(int userId){
         
         boolean ifExists = false;
@@ -37,9 +38,7 @@ public class UserRecord {
                 }
             }
         return ifExists;    
-        
     }
-    
     
     public int getIndexOfUser(int userId){
         
@@ -55,10 +54,12 @@ public class UserRecord {
        return elementIndex;
     }
     
-    
-    
-
-    
-    
-    
+    public void getAllUsers(){
+        for (int i = 0; i < UserRecord.allUsers.size(); i++){
+            System.out.println(UserRecord.allUsers.get(i).getId()+" "
+                    +UserRecord.allUsers.get(i).getName()+" "
+                    +UserRecord.allUsers.get(i).getSurname()+" "
+                    +UserRecord.allUsers.get(i).getRole());
+            }
+    }
 }
