@@ -9,23 +9,24 @@ package bicycle;
  *
  * @author bogurodzica
  */
+
+enum Location {
+    STACJA1, STACJA2, STACJA3
+}
+
+enum State {
+    AVALIABLE, UNAVALIABLE
+}
+
 public class Bicycle {
     private int bicycleId;
-    private int wheelsNumber;
     private int userId = 0;
-    static enum State {
-        AVALIABLE, UNAVALIABLE, BROKEN, SERVICE
-    }
-    static enum Location {
-        STACJA1, STACJA2, STACJA3, STACJA4, STACJA5,
-        STACJA6, STACJA7, STACJA8, STACJA9, STACJA10
-    }
+    
     private State status = State.AVALIABLE;
     private Location location;
     
-    public Bicycle(int bicycleId, int wheelsNumber, Location location){
+    public Bicycle(int bicycleId,  Location location){
         this.bicycleId = bicycleId;
-        this.wheelsNumber = wheelsNumber;
         this.location = location;
     }
     
@@ -33,20 +34,20 @@ public class Bicycle {
         return this.bicycleId;
     }
     
-    public int getWheelsNumber(){
-        return this.wheelsNumber;
-    }
-    
     public int getUserId(){
         return this.userId;
     }
     
-    public void addUserId(int userId){
+    public void changeUserId(int userId){
         this.userId = userId;
     }
     
-    public void changeState(State status){
-        this.status = status;
+    public void makeAvaliable(){
+        this.status = State.AVALIABLE;
+    }
+    
+    public void makeUnavaliable(){
+        this.status = State.UNAVALIABLE;
     }
     
     public void changeLocation(Location location){
