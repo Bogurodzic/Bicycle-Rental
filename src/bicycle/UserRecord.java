@@ -13,11 +13,11 @@ import java.util.*;
 public class UserRecord {
     private int numberOfUsers = 0;
     
-        User user1 = new User(6445,"Daniel","Olszewski", User.Role.ADMIN);
-        User user2 = new User(8355,"Kamil","Jarzab", User.Role.USER);
-        User user3 = new User(3674,"Karina","Urbanek", User.Role.USER);
+        User user1 = new User(6445,"Daniel","Olszewski", Role.ADMIN);
+        User user2 = new User(8355,"Kamil","Jarzab", Role.USER);
+        User user3 = new User(3674,"Karina","Urbanek", Role.USER);
     
-    static List<User> allUsers = new ArrayList<User>();
+    public List<User> allUsers = new ArrayList<User>();
     
     
     public UserRecord(){ //constructor
@@ -42,7 +42,7 @@ public class UserRecord {
     
     public int getIndexOfUser(int userId){
         
-        int elementIndex = -1;
+        int elementIndex = 0;
         
         for (int i = 0; i < allUsers.size(); i++) {
            
@@ -55,11 +55,13 @@ public class UserRecord {
     }
     
     public void getAllUsers(){
-        for (int i = 0; i < UserRecord.allUsers.size(); i++){
-            System.out.println(UserRecord.allUsers.get(i).getId()+" "
-                    +UserRecord.allUsers.get(i).getName()+" "
-                    +UserRecord.allUsers.get(i).getSurname()+" "
-                    +UserRecord.allUsers.get(i).getRole());
-            }
+        for (int i = 0; i < allUsers.size(); i++){
+            System.out.println(allUsers.get(i).getId()+" "
+            +allUsers.get(i).getName()+" "
+            +allUsers.get(i).getSurname()+" "
+            +allUsers.get(i).getRole());
+        }
     }
+
+
 }
