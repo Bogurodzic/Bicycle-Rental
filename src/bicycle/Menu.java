@@ -61,6 +61,8 @@ public class Menu {
                                         UserRecord.getAllUsers();
                                         menuMessage();
                                         break;
+                                    case(5):
+                                        start();
                                 }
                             }
                     }

@@ -7,7 +7,7 @@ package bicycle;
 import java.util.*;
 /**
  *
- * @author bogurodzica
+ * @author bogurodzica, dnlol
  */
 public class Main {
 
