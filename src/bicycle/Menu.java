@@ -34,7 +34,7 @@ public class Menu {
                 }
 
                 if(UserRecord.ifExists(userId)){
-                    if(UserRecord.allUsers.get(UserRecord.getIndexOfUser(userId)).getRole() == User.Role.ADMIN){
+                    if(UserRecord.allUsers.get(UserRecord.getIndexOfUser(userId)).getRole() == Role.ADMIN){
                         infoMessage();
                         menuMessage();
                             while(reader.hasNextInt()){
@@ -48,10 +48,10 @@ public class Menu {
                                         option = enterRole(reader);
                                             switch(option){
                                             case(1):
-                                                UserRecord.allUsers.add(new User (id, name, surname, User.Role.ADMIN));
+                                                UserRecord.allUsers.add(new User (id, name, surname, Role.ADMIN));
                                                 break;
                                             case(2):
-                                                UserRecord.allUsers.add(new User (id, name, surname, User.Role.USER));
+                                                UserRecord.allUsers.add(new User (id, name, surname, Role.USER));
                                                 break;
                                             }
                                         menuMessage();

@@ -9,13 +9,16 @@ package bicycle;
  *
  * @author bogurodzica
  */
+
+enum Role {
+    USER, ADMIN
+}
+
 public class User {
     private int id;
     private String name;
     private String surname;
-    static enum Role {
-        USER, ADMIN
-    }
+
     private Role role;
     
     public User(int id, String name, String surname, Role role){
