@@ -13,26 +13,22 @@ import java.util.*;
 public class UserRecord {
     private int numberOfUsers = 0;
     
-        User user1 = new User(6445,"Daniel","Olszewski", Role.ADMIN);
-        User user2 = new User(8355,"Kamil","Jarzab", Role.USER);
-        User user3 = new User(3674,"Karina","Urbanek", Role.USER);
-    
-    public List<User> allUsers = new ArrayList<User>();
+    static public List<User> allUsers = new ArrayList<User>();
     
     
     public UserRecord(){ //constructor
         
-        allUsers.add(user1);
-        allUsers.add(user2);
-        allUsers.add(user3);
+        allUsers.add(new Admin(6445,"Daniel","Olszewski"));
+        allUsers.add(new Cyclist(8355,"Kamil","Jarzab"));
+        allUsers.add(new Cyclist(3674,"Karina","Urbanek"));
         
     }
     
-    public boolean ifExists(int userId){
+        public boolean ifExists(int userId){
         
         boolean ifExists = false;
         
-            for(User users : allUsers){
+            for(User users : UserRecord.allUsers){
                 if(userId == users.getId()){
                     ifExists = true;
                 }
@@ -44,9 +40,9 @@ public class UserRecord {
         
         int elementIndex = 0;
         
-        for (int i = 0; i < allUsers.size(); i++) {
+        for (int i = 0; i < UserRecord.allUsers.size(); i++) {
            
-            if(userId == allUsers.get(i).getId()){
+            if(userId == UserRecord.allUsers.get(i).getId()){
                 elementIndex = i;
             }
           
@@ -54,14 +50,6 @@ public class UserRecord {
        return elementIndex;
     }
     
-    public void getAllUsers(){
-        for (int i = 0; i < allUsers.size(); i++){
-            System.out.println(allUsers.get(i).getId()+" "
-            +allUsers.get(i).getName()+" "
-            +allUsers.get(i).getSurname()+" "
-            +allUsers.get(i).getRole());
-        }
-    }
 
 
 }
