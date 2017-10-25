@@ -19,7 +19,8 @@ public class Menu {
     private String name = null;
     private int option;
     
-    UserRecord UserRecord = new UserRecord();
+   UserRecord UserRecord = new UserRecord();
+   BicycleRecord BicycleRecord = new BicycleRecord();
     
     public void start(){
         while(true){
@@ -34,9 +35,13 @@ public class Menu {
                 }
 
                 if(UserRecord.ifExists(userId)){
+                    
                     if(UserRecord.allUsers.get(UserRecord.getIndexOfUser(userId)).getRole() == Role.ADMIN){
                         infoMessage();
-                        menuMessage();
+                        Admin admin = new Admin(userId,
+                                UserRecord.allUsers.get(UserRecord.getIndexOfUser(userId)).getName(),
+                                UserRecord.allUsers.get(UserRecord.getIndexOfUser(userId)).getSurname());
+                        adminMenu();
                             while(reader.hasNextInt()){
                                 option = reader.nextInt();
                                 switch(option){
@@ -48,28 +53,59 @@ public class Menu {
                                         option = enterRole(reader);
                                             switch(option){
                                             case(1):
-                                                UserRecord.allUsers.add(new User (id, name, surname, Role.ADMIN));
+                                                admin.AddAdmin(id, name, surname);
                                                 break;
                                             case(2):
-                                                UserRecord.allUsers.add(new User (id, name, surname, Role.USER));
+                                                admin.AddCyclist(id, name, surname);
                                                 break;
                                             }
-                                        menuMessage();
+                                        adminMenu();
                                         break;
 
                                     case(2):
-                                        UserRecord.getAllUsers();
-                                        menuMessage();
+                                        admin.getAllUsers();
+                                        adminMenu();
                                         break;
-                                    case(5):
+                                        
+                                    case(3):
+                                        System.out.println("\tREMOVE USER");
+                                        admin.getAllUsers();
+                                        id = enterId(reader);
+                                        admin.removeUser(id);
+                                        admin.getAllUsers();
+                                        adminMenu();
+                                        break;
+                                    case(4):
                                         start();
                                 }
                             }
                     }
                     else{
-                        welcomeMessage();
-                        // TODO: menu for user
-                    } 
+                        //welcomeMessage();
+                        infoMessage();
+                        Cyclist cyclist = new Cyclist(userId,
+                                UserRecord.allUsers.get(UserRecord.getIndexOfUser(userId)).getName(),
+                                UserRecord.allUsers.get(UserRecord.getIndexOfUser(userId)).getSurname());
+                        cyclistMenu();
+                        
+                        while(reader.hasNextInt()){
+                                option = reader.nextInt();
+                                switch(option){
+                                    case(1):
+                                        System.out.println("\tRENT BICYCLE:");
+                                        cyclist.getAllBicycle();
+                                        id = enterId(reader);
+                                        cyclist.rentBicycle(id, userId);
+                                        break;
+                                    case(3):
+                                        System.out.println("\tYOUR STATUS:");
+                                        cyclist.getUserStatus(userId);
+                                        break;
+                                    case(4):
+                                        start();
+                            } 
+                        } 
+                    }
                 }
                 else{
                     userDoesNotExistMessage();
@@ -94,17 +130,24 @@ public class Menu {
     }
     
     private void infoMessage(){
-        System.out.println("\tWelcome Admin " + UserRecord.allUsers.get(UserRecord.getIndexOfUser(userId)).getName());
+        System.out.println("\tWelcome " + 
+                UserRecord.allUsers.get(UserRecord.getIndexOfUser(userId)).getRole() + " " +
+                UserRecord.allUsers.get(UserRecord.getIndexOfUser(userId)).getName());
         System.out.println("Menu: \n");
     }
     
-    private void menuMessage(){
-        System.out.println("1. Add user\n2. Show users\n3. Remove user\n4. Edit user\n5. Logout");
+    private void adminMenu(){
+        System.out.println("1. Add user\n2. Show users\n3. Remove user\n4. Logout");
     }
     
-    private void welcomeMessage(){
-        System.out.println("\tWelcome " + UserRecord.allUsers.get(UserRecord.getIndexOfUser(userId)).getName());
+    private void cyclistMenu(){
+        System.out.println("1. Rent bicycle\n2. Return bicycle\n3. Check status\n4. Logout");
     }
+    
+//    private void welcomeMessage(){
+//        System.out.println("\tWelcome " 
+//                + UserRecord.allUsers.get(UserRecord.getIndexOfUser(userId)).getName());
+//    }
     
     private void invalidInputMessage(){
         System.out.println("\tInvalid input! Try again \n");
