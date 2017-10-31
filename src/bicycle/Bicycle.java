@@ -10,9 +10,9 @@ package bicycle;
  * @author bogurodzica
  */
 
-enum Location {
-    STACJA1, STACJA2, STACJA3
-}
+//enum Location {
+//    STACJA1, STACJA2, STACJA3
+//}
 
 enum State {
     AVALIABLE, UNAVALIABLE
@@ -20,26 +20,19 @@ enum State {
 
 public class Bicycle {
     private int bicycleId;
-    private int userId = 0;
+    private String Station;
     
     private State status = State.AVALIABLE;
-    private Location location;
+    //private Location location;
     
-    public Bicycle(int bicycleId,  Location location){
+    public Bicycle(int bicycleId,  String Station){
         this.bicycleId = bicycleId;
-        this.location = location;
+        //this.location = location;
+        this.Station = Station;
     }
     
     public int getBicycleId(){
         return this.bicycleId;
-    }
-    
-    public int getUserId(){
-        return this.userId;
-    }
-    
-    public void changeUserId(int userId){
-        this.userId = userId;
     }
     
     public void makeAvaliable(){
@@ -50,11 +43,20 @@ public class Bicycle {
         this.status = State.UNAVALIABLE;
     }
     
-    public void changeLocation(Location location){
-        this.location = location;
+//    public void changeLocation(Location location){
+//        this.location = location;
+//    }
+//    
+//    public Location getLocation(){
+//        return this.location;
+//    }
+    
+    public void changeStation(String Station){
+        this.Station = Station;
     }
     
-    public Location getLocation(){
-        return this.location;
+    public String getStation(){
+        return this.Station;
     }
+    
 }
