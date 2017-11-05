@@ -15,4 +15,5 @@ public class Cyclist extends User{
         super(id, name, surname, Role.CYCLIST);
     }
     
+    
 }
