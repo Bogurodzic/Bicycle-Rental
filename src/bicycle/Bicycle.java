@@ -15,14 +15,14 @@ package bicycle;
 //}
 
 enum State {
-    AVALIABLE, UNAVALIABLE
+    AVAILABLE, UNAVAILABLE
 }
 
 public class Bicycle {
     private int bicycleId;
     private String Station;
     
-    private State status = State.AVALIABLE;
+    private State status = State.AVAILABLE;
     //private Location location;
     
     public Bicycle(int bicycleId,  String Station){
@@ -35,12 +35,16 @@ public class Bicycle {
         return this.bicycleId;
     }
     
+    public State getState(){
+        return this.status;
+    } 
+    
     public void makeAvaliable(){
-        this.status = State.AVALIABLE;
+        this.status = State.AVAILABLE;
     }
     
     public void makeUnavaliable(){
-        this.status = State.UNAVALIABLE;
+        this.status = State.UNAVAILABLE;
     }
     
 //    public void changeLocation(Location location){

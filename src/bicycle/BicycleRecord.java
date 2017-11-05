@@ -11,25 +11,20 @@ import java.util.*;
  */
 public class BicycleRecord {
     
-    Bicycle bicycle1 = new Bicycle(1, Location.STACJA3);
+ 
 
-    static List<Bicycle> allBicycle = new ArrayList<Bicycle>();
+    public static List<Bicycle> allBicycle = new ArrayList<Bicycle>();
     
     
     public BicycleRecord(){ //constructor
         
-        allBicycle.add(bicycle1);
+        allBicycle.add(new Bicycle(1, "Station1"));
+        allBicycle.add(new Bicycle(2, "Station2"));
+        allBicycle.add(new Bicycle(3, "Station3"));
     
-    }
+    } 
     
-    public void AddBicycle(){
+    
+    
         
-    }
-        
-    
-    static void removeBicycleFromRecord(){
-        for (Bicycle bicycle : allBicycle) {
-            System.out.println(bicycle.getLocation());
-        }
-    }
 }

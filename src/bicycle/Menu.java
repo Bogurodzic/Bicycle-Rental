@@ -18,6 +18,7 @@ public class Menu {
     private String surname = null;
     private String name = null;
     private int option;
+    private String station = null;
     
    UserRecord UserRecord = new UserRecord();
    BicycleRecord BicycleRecord = new BicycleRecord();
@@ -47,10 +48,14 @@ public class Menu {
                                 switch(option){
                                     case(1): 
                                         System.out.println("\tADD USER");
+                                        
                                         id = enterId(reader);
                                         name = enterName(reader);
                                         surname = enterSurname(reader);
                                         option = enterRole(reader);
+                                        
+                                        System.out.println("PICK ROLE\n1.Admin\n2.Cyclist");
+                                        
                                             switch(option){
                                             case(1):
                                                 admin.AddAdmin(id, name, surname);
@@ -75,7 +80,28 @@ public class Menu {
                                         admin.getAllUsers();
                                         adminMenu();
                                         break;
+                                        
                                     case(4):
+                                        System.out.println("\tADD BICYCLE");
+                                        admin.getAllBicycle();
+                                        id = enterBicycleId(reader);
+                                        station = enterStation(reader);
+                                        admin.addBicycle(id, station);
+                                        System.out.println("\tYou added bicycle "+id+" to "+station);
+                                        admin.getAllBicycle();
+                                        adminMenu();
+                                        break;
+                                        
+                                    case(5):
+                                        System.out.println("\tREMOVE BICYCLE");
+                                        admin.getAllBicycle();
+                                        id = enterId(reader);
+                                        admin.removeBicycle(id);
+                                        admin.getAllBicycle();
+                                        adminMenu();
+                                        break;
+
+                                    case(6):
                                         start();
                                 }
                             }
@@ -94,12 +120,20 @@ public class Menu {
                                     case(1):
                                         System.out.println("\tRENT BICYCLE:");
                                         cyclist.getAllBicycle();
-                                        id = enterId(reader);
+                                        id = enterBicycleId(reader);
                                         cyclist.rentBicycle(id, userId);
+                                        cyclistMenu();
+                                        break;
+                                    case(2):
+                                        System.out.println("YOU RETURNED BICYCLE!\nSTATUS:");
+                                        cyclist.returnBicycle(id, userId);
+                                        cyclist.getUserStatus(userId);
+                                        cyclistMenu();
                                         break;
                                     case(3):
                                         System.out.println("\tYOUR STATUS:");
                                         cyclist.getUserStatus(userId);
+                                        cyclistMenu();
                                         break;
                                     case(4):
                                         start();
@@ -137,7 +171,7 @@ public class Menu {
     }
     
     private void adminMenu(){
-        System.out.println("1. Add user\n2. Show users\n3. Remove user\n4. Logout");
+        System.out.println("1. Add user\n2. Show users\n3. Remove user\n4. Add bicycle\n5. Remove bicycle\n6. Logout");
     }
     
     private void cyclistMenu(){
@@ -174,6 +208,16 @@ public class Menu {
     
     private int enterRole(Scanner reader){
         System.out.println("Pick role:\n1.Admin\n2.User");
+        return reader.nextInt();
+    }
+    
+    private String enterStation(Scanner reader){
+        System.out.println("Enter Station: ");
+        return reader.next();
+    }
+    
+    private int enterBicycleId(Scanner reader){
+        System.out.println("Enter Bicycle Id:");
         return reader.nextInt();
     }
     
