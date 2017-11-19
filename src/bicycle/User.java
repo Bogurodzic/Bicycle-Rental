@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -104,8 +104,7 @@ public class User {
        for (int i = 0; i < UserRecord.allUsers.size(); i++){
             if( userId == UserRecord.allUsers.get(i).getUserId()){
                UserRecord.allUsers.get(i).setBicycleId(bicycleId);
-               makeUnavailable(bicycleId);
-               //start timer
+               handleRentRequest(bicycleId);
             }
        }
        
@@ -116,26 +115,26 @@ public class User {
         for (int i = 0; i < UserRecord.allUsers.size(); i++){
             if( userId == UserRecord.allUsers.get(i).getUserId() && UserRecord.allUsers.get(i).getBicycleId() > 0 ){
                UserRecord.allUsers.get(i).setBicycleId(0);
-               makeAvailable(bicycleId); //stop timer if timer didnt reached 0, if timer reached 0 set flag OVERDUE for user
+               handleReturnRequest(bicycleId);
             }
         }
         
     }
     
-    private void makeUnavailable(int bicycleId){
+    private void handleRentRequest(int bicycleId){
 
         for (int i = 0; i < BicycleRecord.allBicycle.size(); i++){
             if(bicycleId == BicycleRecord.allBicycle.get(i).getBicycleId()){
-                BicycleRecord.allBicycle.get(i).makeUnavaliable();
+                BicycleRecord.allBicycle.get(i).handleRentRequest();
             }
         }
     }
     
-    private void makeAvailable(int bicycleId){
+    private void handleReturnRequest(int bicycleId){
         
         for (int i = 0; i < BicycleRecord.allBicycle.size(); i++){
             if(bicycleId == BicycleRecord.allBicycle.get(i).getBicycleId()){
-                BicycleRecord.allBicycle.get(i).makeAvaliable();
+                BicycleRecord.allBicycle.get(i).handleReturnRequest();
             }
             
         }

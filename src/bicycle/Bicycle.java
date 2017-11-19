@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package bicycle;
-
+import java.util.Date;
 /**
  *
  * @author bogurodzica
@@ -21,6 +21,8 @@ enum State {
 public class Bicycle {
     private int bicycleId;
     private String Station;
+    private Date rentTime;
+    private Date returnTime;
     
     private State status = State.AVAILABLE;
     //private Location location;
@@ -39,13 +41,38 @@ public class Bicycle {
         return this.status;
     } 
     
-    public void makeAvaliable(){
+    private void makeAvaliable(){
         this.status = State.AVAILABLE;
     }
     
-    public void makeUnavaliable(){
+    private void makeUnavaliable(){
         this.status = State.UNAVAILABLE;
+        
     }
+    
+    private void rentTime(){
+        this.rentTime = new Date();
+        //System.out.println(this.rentTime.toString());
+        System.out.println("You have rented bicycle");
+    }
+    
+    private void returnTime(){
+        this.returnTime = new Date();
+        //System.out.println(this.returnTime.toString());
+        System.out.println("You have rented bicycle");
+    }
+    
+    public void handleRentRequest(){
+        this.makeUnavaliable();
+        this.rentTime();
+    }
+    
+    public void handleReturnRequest(){
+        this.makeAvaliable();
+        this.returnTime();
+    }
+    
+
     
 //    public void changeLocation(Location location){
 //        this.location = location;
