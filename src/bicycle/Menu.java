@@ -83,21 +83,21 @@ public class Menu {
                                         
                                     case(4):
                                         System.out.println("\tADD BICYCLE");
-                                        admin.getAllBicycle();
+                                        BicycleRecord.getAllBicycle();
                                         id = enterBicycleId(reader);
                                         station = enterStation(reader);
-                                        admin.addBicycle(id, station);
+                                        BicycleRecord.addBicycle(id, station);
                                         System.out.println("\tYou added bicycle "+id+" to "+station);
-                                        admin.getAllBicycle();
+                                        BicycleRecord.getAllBicycle();
                                         adminMenu();
                                         break;
                                         
                                     case(5):
                                         System.out.println("\tREMOVE BICYCLE");
-                                        admin.getAllBicycle();
+                                        BicycleRecord.getAllBicycle();
                                         id = enterId(reader);
-                                        admin.removeBicycle(id);
-                                        admin.getAllBicycle();
+                                        BicycleRecord.removeBicycle(id);
+                                        BicycleRecord.getAllBicycle();
                                         adminMenu();
                                         break;
 
@@ -119,7 +119,7 @@ public class Menu {
                                 switch(option){
                                     case(1):
                                         System.out.println("\tRENT BICYCLE:");
-                                        cyclist.getAllBicycle();
+                                        BicycleRecord.getAllBicycle();
                                         id = enterBicycleId(reader);
                                         cyclist.rentBicycle(id, userId);
                                         cyclistMenu();
