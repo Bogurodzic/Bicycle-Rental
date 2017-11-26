@@ -121,7 +121,8 @@ public class Menu {
                                         System.out.println("\tRENT BICYCLE:");
                                         cyclist.getAllBicycle();
                                         id = enterBicycleId(reader);
-                                        cyclist.rentBicycle(id, userId);
+                                        id = cyclist.rentBicycle(id, userId);
+                                        System.out.println("ID wypozyczonego roweru " + id);
                                         cyclistMenu();
                                         break;
                                     case(2):

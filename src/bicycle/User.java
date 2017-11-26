@@ -73,9 +73,26 @@ public class User {
         return this.bicycleId;
     }
     
+    public boolean isBicycleRented(){
+        if(this.bicycleId > 0){
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
     
     public void setBicycleId(int bicycleId){
         this.bicycleId = bicycleId;
+    }
+    
+    public void rentBicycle(int bicycleId){
+        if(this.isBicycleRented()){
+           System.out.println("You have already rented bicycle");
+        } else {
+            this.setBicycleId(bicycleId);
+            handleRentRequest(bicycleId);
+        }
     }
     
 
@@ -99,15 +116,17 @@ public class User {
         } 
     }
     
-    public void rentBicycle(int bicycleId, int userId){
-        
+    public int rentBicycle(int bicycleId, int userId){
+       int id = 0;
+       
        for (int i = 0; i < UserRecord.allUsers.size(); i++){
             if( userId == UserRecord.allUsers.get(i).getUserId()){
-               UserRecord.allUsers.get(i).setBicycleId(bicycleId);
-               handleRentRequest(bicycleId);
+               UserRecord.allUsers.get(i).rentBicycle(bicycleId);
+               id = UserRecord.allUsers.get(i).getBicycleId();
             }
        }
-       
+
+       return id;
     }
 
     public void returnBicycle(int bicycleId, int userId){
