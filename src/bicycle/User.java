@@ -16,6 +16,8 @@ enum Role {
 
 public class User {
     
+    
+    
     private int bicycleId = 0;
     
     private int userId;
@@ -31,6 +33,7 @@ public class User {
         this.role = role;
     }
     
+    BicycleRecord BicycleRecord = new BicycleRecord();
     
 
 ////////////////////////////////////Operations on User///////////////////////////////////////    
@@ -89,22 +92,14 @@ public class User {
 //        }
 //    }
     
-    public void getAllBicycle(){
 
-        for (int i = 0; i < BicycleRecord.allBicycle.size(); i++){
-            System.out.println("Bicycle " 
-                                + BicycleRecord.allBicycle.get(i).getBicycleId()+" "
-                                + BicycleRecord.allBicycle.get(i).getStation()+" "
-                                + BicycleRecord.allBicycle.get(i).getState());
-        } 
-    }
     
     public void rentBicycle(int bicycleId, int userId){
         
        for (int i = 0; i < UserRecord.allUsers.size(); i++){
             if( userId == UserRecord.allUsers.get(i).getUserId()){
                UserRecord.allUsers.get(i).setBicycleId(bicycleId);
-               makeUnavailable(bicycleId);
+               BicycleRecord.makeUnavailable(bicycleId);
                //start timer
             }
        }
@@ -116,31 +111,13 @@ public class User {
         for (int i = 0; i < UserRecord.allUsers.size(); i++){
             if( userId == UserRecord.allUsers.get(i).getUserId() && UserRecord.allUsers.get(i).getBicycleId() > 0 ){
                UserRecord.allUsers.get(i).setBicycleId(0);
-               makeAvailable(bicycleId); //stop timer if timer didnt reached 0, if timer reached 0 set flag OVERDUE for user
+               BicycleRecord.makeAvailable(bicycleId); //stop timer if timer didnt reached 0, if timer reached 0 set flag OVERDUE for user
             }
         }
         
     }
     
-    private void makeUnavailable(int bicycleId){
 
-        for (int i = 0; i < BicycleRecord.allBicycle.size(); i++){
-            if(bicycleId == BicycleRecord.allBicycle.get(i).getBicycleId()){
-                BicycleRecord.allBicycle.get(i).makeUnavaliable();
-            }
-        }
-    }
-    
-    private void makeAvailable(int bicycleId){
-        
-        for (int i = 0; i < BicycleRecord.allBicycle.size(); i++){
-            if(bicycleId == BicycleRecord.allBicycle.get(i).getBicycleId()){
-                BicycleRecord.allBicycle.get(i).makeAvaliable();
-            }
-            
-        }
-    }
-    
     
     
 }

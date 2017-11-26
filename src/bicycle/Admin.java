@@ -50,16 +50,6 @@ public class Admin extends User {
     
     /////////////////////////////////////////Operations on Bicycles//////////////////////////////////////////// 
     
-    public void addBicycle(int bicycleId, String Station){
-        BicycleRecord.allBicycle.add(new Bicycle(bicycleId, Station));
-    }
-    
-    public void removeBicycle(int bicycleId){
-        for (int i = 0; i < BicycleRecord.allBicycle.size(); i++){
-            if( bicycleId == BicycleRecord.allBicycle.get(i).getBicycleId()){
-               BicycleRecord.allBicycle.remove(BicycleRecord.allBicycle.get(i));
-            }
-        }  
-    }
+
     
 }
