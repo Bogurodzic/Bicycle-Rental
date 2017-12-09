@@ -112,7 +112,7 @@ public class User {
             System.out.println("Bicycle " 
                                 + BicycleRecord.allBicycle.get(i).getBicycleId()+" "
                                 + BicycleRecord.allBicycle.get(i).getStation()+" "
-                                + BicycleRecord.allBicycle.get(i).getState());
+                                + BicycleRecord.allBicycle.get(i).getState()+" ");
         } 
     }
     
@@ -157,6 +157,20 @@ public class User {
             }
             
         }
+    }
+    
+    public String checkTime(int bicycleId){
+        String info = "Żaden rower nie jest wypożyczony";
+        
+        for (int i = 0; i < BicycleRecord.allBicycle.size(); i++){
+            if(bicycleId == BicycleRecord.allBicycle.get(i).getBicycleId()){
+                info = BicycleRecord.allBicycle.get(i).handleRentTime();
+            }
+        }
+        System.out.println("odpala sie");
+        System.out.println(info);
+        return info;
+        
     }
     
     
