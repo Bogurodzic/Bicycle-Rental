@@ -92,7 +92,7 @@ public class Bicycle {
         if(this.isRentTimeExceed()){
             return "Przekroczono czas usługi";
         } else {
-            return "Zostało jeszcze" + (this.timeLimit - this.rentDuration);
+            return "Zostało jeszcze " + (this.timeLimit - this.rentDuration) + "s";
         }
     };
     

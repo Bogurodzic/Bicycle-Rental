@@ -112,36 +112,39 @@ public class Menu {
                         Cyclist cyclist = new Cyclist(userId,
                                 UserRecord.allUsers.get(UserRecord.getIndexOfUser(userId)).getName(),
                                 UserRecord.allUsers.get(UserRecord.getIndexOfUser(userId)).getSurname());
+                        System.out.println(cyclist.checkTime(userId));
                         cyclistMenu();
 
                         while(reader.hasNextInt()){
                                 option = reader.nextInt();
                                 switch(option){
                                     case(1):
-                                        System.out.println(cyclist.checkTime(cyclist.getBicycleId()));
+                                        System.out.println(cyclist.checkTime(userId));
                                         System.out.println("\tRENT BICYCLE:");
                                         cyclist.getAllBicycle();
                                         id = enterBicycleId(reader);
                                         id = cyclist.rentBicycle(id, userId);
                                         System.out.println("ID wypozyczonego roweru " + id);
+                                        System.out.println(cyclist.checkTime(userId));
                                         cyclistMenu();
                                         break;
                                     case(2):
                                         System.out.println("YOU RETURNED BICYCLE!\nSTATUS:");
                                         cyclist.returnBicycle(id, userId);
                                         cyclist.getUserStatus(userId);
+                                        System.out.println(cyclist.checkTime(userId));
                                         cyclistMenu();
                                         break;
                                     case(3):
                                         System.out.println("\tYOUR STATUS:");
-                                        System.out.println(cyclist.checkTime(cyclist.getBicycleId()));
                                         cyclist.getUserStatus(userId);
+                                        System.out.println(cyclist.checkTime(userId));
                                         cyclistMenu();
                                         break;
                                     case(4):
                                         start();
                                      case(5):
-                                        cyclist.checkTime(cyclist.getBicycleId());
+                                        cyclist.checkTime(userId);
                             } 
                         } 
                     }
