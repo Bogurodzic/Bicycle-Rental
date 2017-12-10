@@ -141,7 +141,7 @@ public class Menu {
                                     case(4):
                                         start();
                                      case(5):
-                                        cyclist.checkTime(1);
+                                        cyclist.checkTime(cyclist.getBicycleId());
                             } 
                         } 
                     }

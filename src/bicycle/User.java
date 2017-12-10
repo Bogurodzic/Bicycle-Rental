@@ -70,6 +70,7 @@ public class User {
     
     
     public int getBicycleId(){
+        System.out.println("Uzytkownik posiada rower o id " + this.bicycleId);
         return this.bicycleId;
     }
     
