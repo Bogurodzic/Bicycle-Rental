@@ -22,8 +22,8 @@ public class Bicycle {
     private int bicycleId;
     private int timeLimit = 5;
     private String Station;
-    private Date rentTime;
-    private Date returnTime;
+    private long rentTime;
+    private long returnTime = 0;
     private long rentDuration;
     
     private State status = State.AVAILABLE;
@@ -53,13 +53,13 @@ public class Bicycle {
     }
     
     private void rentTime(){
-        this.rentTime = new Date();
+        this.rentTime = new Date().getTime();
         //System.out.println(this.rentTime.toString());
 //        System.out.println("You have rented bicycle");
     }
     
     private void returnTime(){
-        this.returnTime = new Date();
+        this.returnTime = new Date().getTime();
         //System.out.println(this.returnTime.toString());
 //        System.out.println("You have returned bicycle");
     }
@@ -72,11 +72,15 @@ public class Bicycle {
     public void handleReturnRequest(){
         this.makeAvaliable();
         this.returnTime();
-        this.calculatTimeDifference(this.rentTime, this.returnTime);
+        this.calculatTimeDifference();
     }
     
-    public void calculatTimeDifference(Date time1, Date time2){
-        this.rentDuration = (time2.getTime() - time1.getTime())/1000;      
+    public void calculatTimeDifference(){
+        if(this.returnTime > 0 || this.returnTime > this.rentTime){
+            this.rentDuration = (this.returnTime - this.rentTime)/1000;      
+        } else {
+            this.rentDuration = (new Date().getTime() - this.rentTime)/1000;      
+        }
     }
     
     public boolean isRentTimeExceed(){
@@ -84,7 +88,7 @@ public class Bicycle {
     }
     
     public String handleRentTime(){
-        calculatTimeDifference(this.rentTime, this.returnTime);
+        calculatTimeDifference();
         if(this.isRentTimeExceed()){
             return "Przekroczono czas usługi";
         } else {
